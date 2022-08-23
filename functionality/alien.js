@@ -26,7 +26,7 @@ let alienFun = {
     spawnAlien: function(alienNo, alienRow, alienCol) {
         document.getElementById("game-grid").innerHTML +=  `<img
             id="alien-${alienNo}"
-            class="alien row-${alienRow}"
+            class="alien ${alienRow}"
             src="./images/alien.png"
             style="
                 grid-column-start: ${6*alienCol - 4};

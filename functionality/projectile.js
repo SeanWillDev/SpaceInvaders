@@ -54,17 +54,9 @@ let projectileFun = {
             if (this.checkColumnOverlap(alien, playerProjectile) && this.checkRowOverlap(alien, playerProjectile)) {
                 alienFun.explodeAlien(alien.id, gameFun);
                 playerProjectile.remove();
-                if (alien.classList.contains("row-1")) {
-                    gameFun.playerScore += 50;
-                } else if (alien.classList.contains("row-2")) {
-                    gameFun.playerScore += 40;
-                } else if (alien.classList.contains("row-3")) {
-                    gameFun.playerScore += 30;
-                } else if (alien.classList.contains("row-4")) {
-                    gameFun.playerScore += 20;
-                } else if (alien.classList.contains("row-5")) {
-                    gameFun.playerScore += 10;
-                }
+                const alienRowNumber = parseInt([...alien.classList][1]);
+                const scoreAwarded = (6 - alienRowNumber) * 10;
+                gameFun.playerScore += scoreAwarded;
                 document.getElementById("score").textContent = gameFun.playerScore;
                 if (gameFun.playerScore > gameFun.highScore) {
                     gameFun.highScore = gameFun.playerScore;
@@ -96,10 +88,8 @@ let projectileFun = {
             const characterColumnEnd = parseInt(characterRef.style.gridColumnEnd);
             const projectileColumn = parseInt(projectileRef.style.gridColumnStart);
             let columnOverlap = false;
-            if (characterColumnStart <= projectileColumn) {
-                if (characterColumnEnd >= projectileColumn) {
-                    columnOverlap = true;
-                }
+            if ((characterColumnStart <= projectileColumn) && (characterColumnEnd >= projectileColumn)) {
+                columnOverlap = true;
             }
             return columnOverlap;
         }
@@ -114,15 +104,10 @@ let projectileFun = {
         const projectileRowStart = parseInt(projectileRef.style.gridRowStart);
         const projectileRowEnd = parseInt(projectileRef.style.gridRowEnd);
         let rowOverlap = false;
-        if (characterRowStart <= projectileRowStart) {
-            if (characterRowEnd >= projectileRowStart) {
-                rowOverlap = true;
-            }
-        }
-        if (characterRowStart <= projectileRowEnd) {
-            if (characterRowEnd >= projectileRowEnd) {
-                rowOverlap = true;
-            }
+        if ((characterRowStart <= projectileRowStart) && (characterRowEnd >= projectileRowStart)) {
+            rowOverlap = true;
+        } else if ((characterRowStart <= projectileRowEnd) && (characterRowEnd >= projectileRowEnd)) {
+            rowOverlap = true;
         }
         return rowOverlap;
     },
