@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+        <link href="http://fonts.cdnfonts.com/css/atrox" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <script src="index.js" type="module"></script>
+    </head>
+    <body>
+        <!-- The start-screen is the intial screen displayed on loading the page, containing the title, three sprites, the start button and
+            the controls -->
+        <div id="start-screen">
+            <div id="title">
+                <h1 id="title-line-one">Space</h1>
+                <h1 id="title-line-two">Invaders</h1>
+            </div>
+            <div id="invader-div">
+                <img class="invader" src="./images/alien.png"/>
+                <img class="invader" src="./images/alien.png"/>
+                <img class="invader" src="./images/alien.png"/>
+            </div>
+            <div class="start-button">Play</div>
+            <h3 id="controls">Use arrow keys to move, spacebar to fire</h3>
+        </div>
+        <!-- The game-screen is displayed after either start-button is clicked. This contains the stats-div and the game-grid. The stats-div displays
+            the score, highscore and lives remaining. The game-grid is a 100x65 display-grid which will contain the player, aliens, barriers and
+            projectiles. -->
+        <div id="game-screen" class="hidden">
+            <div id="stats-div">
+                <h3>Score: <span id="score"></span></h3>
+                <h3>High Score: <span id="high-score"></span></h3>
+                <div>
+                    <h3>Lives: </h3>
+                    <div id="lives"></div>
+                </div>
+            </div>
+            <div id="game-grid"></div>
+        </div>
+        <!-- The game-over-screen is displayed whenever a game over condition is met, such as the aliens descending too far down the screen or the
+            player running out of lives. This will display the game over message, the final score and a play again button. -->
+        <div id="game-over-screen" class="hidden">
+            <h1 id="game-over">Game Over!</h1>
+            <h3 id="game-over-score">Score: <span id="final-score"></span></h3>
+            <div class="start-button">Play Again</div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,185 @@
+/* If viewport height:width ratio is greater than 3:4, the root element font size is set to 1% of viewport width. */
+@media (min-height: 75vw) {
+    html {
+        font-size: 1vw;
+    }
+}
+
+/* If viewport height:width ratio is less than 3:4, the root element font size is set to 1% of viewport height. */
+@media (max-height: 75vw) {
+    html {
+        font-size: 1.2vh;
+    }
+}
+
+* {
+    margin: 0;
+}
+
+#title, #game-over, .start-button, #controls, #stats-div, #game-over-score {
+    font-family: 'ATROX', sans-serif;
+}
+
+html, body, #start-screen, #game-screen, #game-over-screen {
+    height: 100%;
+}
+
+body {
+    background-color: #202020;
+    color: #F8F8F8;
+}
+
+#start-screen, #game-over-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#title {
+    letter-spacing: 1rem;
+    font-weight: 300;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#title-line-one {
+    font-size: 20rem;
+    color: #FFD000;
+    text-shadow: 0 -1.5rem #F80000;
+    transform: perspective(15rem) rotateX(-15deg);
+    margin-bottom: -2.5rem;
+}
+
+#title-line-two {
+    font-size: 20rem;
+    background: linear-gradient(#FFD000 0%, #FFD000 20%, #F8F8F8 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    filter: drop-shadow(0 -1.5rem #F80000);
+    transform: perspective(15rem) rotateX(-10deg);
+    margin: -2.4rem 0;
+}
+
+#invader-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.invader {
+    height: 15rem;
+    width: 20rem;
+}
+
+.start-button {
+    color: #FFD000;
+    font-size: 10rem;
+}
+
+.start-button:hover {
+    color: #F8F8F8;
+    cursor: pointer;
+}
+
+#controls {
+    font-size: 3rem;
+    font-weight: 300;
+}
+
+#game-over {
+    color: #F8F8F8;
+    font-size: 15rem;
+}
+
+#game-over-score {
+    color: #F8F8F8;
+    font-size: 7rem;
+}
+
+#start-screen.hidden, #start-screen.hidden > *, #game-screen.hidden, #game-over-screen.hidden, #game-over-screen.hidden > *{
+    display: none;
+}
+
+/* The #game-grid is the grid where the core gameplay takes place. The player along with all aliens, barriers and projectiles exist within here.
+    Each column has a height of 1rem and each row has a height of 1rem. The grid consists of 100 columns and 65 rows. Each alien and player has a width
+    of 4 columns and a height of 3 rows (4x3 rem). */
+#game-grid {
+    margin-top: 5rem;
+    display: grid;
+    grid-template-columns: repeat(100, 1rem);
+    grid-template-rows: repeat(65, 1rem);
+}
+
+.alien {
+    height: 100%;
+    width: 100%;
+}
+
+#player {
+    height: 100%;
+    width: 100%;
+}
+
+#stats-div {
+    width: 100rem;
+    font-size: 2rem;
+}
+
+#stats-div, #game-grid {
+    margin: 0;
+    background-color: #101010;
+}
+
+#stats-div, #stats-div > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#stats-div > *{
+    margin: 2rem;
+}
+
+#stats-div > div > * {
+    margin-left: 2rem;
+}
+#stats-div > div > h3 {
+    margin-bottom: 0.5rem;
+}
+
+#game-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#lives {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    width: 12rem;
+}
+
+.life { 
+    height: 3rem;
+    width: 4rem;
+}
+
+.projectile {
+    border-left: solid #F8F8F8;
+}
+
+.barrier {
+    background-color: #00FF00;
+}
+
+.explosion {
+    filter: brightness(0) invert(1);
+}
